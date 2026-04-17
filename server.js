@@ -111,28 +111,49 @@ function buildEmailHtml({ toEmail, subject, message }) {
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>DH-ESPORTS</title>
+  <style>
+    /* Basic resets and fallbacks for email clients */
+    .ExternalClass, .ReadMsgBody { width: 100%; background-color: #0f172a; }
+    body, table, td, p, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+    /* Responsive container */
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; }
+      .content-padding { padding: 20px 16px !important; }
+      .button-td { padding: 0 16px 30px !important; }
+      .msg-inner { padding: 16px !important; }
+      .header-inner { padding: 16px !important; }
+      .brand-text { font-size: 16px !important; }
+      .site-button { padding: 12px 24px !important; font-size: 15px !important; }
+    }
+  </style>
 </head>
-<body style="margin:0;padding:0;background:#0f172a;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0f172a;padding:30px 10px;">
+<body style="margin:0;padding:0;background:#0f172a;font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0f172a;padding:30px 10px;" role="presentation">
     <tr>
       <td align="center">
 
-        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:18px;overflow:hidden;">
+        <!-- Main container: wider radius, energetic design -->
+        <table width="600" cellpadding="0" cellspacing="0" class="email-container" style="max-width:600px;width:100%;background:#ffffff;border-radius:28px;overflow:hidden;box-shadow:0 20px 35px -12px rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.08);">
 
-          <!-- Header -->
+          <!-- Dynamic Header with energetic gradient and bold style -->
           <tr>
-            <td style="background:#111827;padding:20px;" align="left">
-              <table width="100%">
+            <td style="background:linear-gradient(135deg, #0b1120 0%, #1e293b 100%);padding:24px 28px;" align="left" class="header-inner">
+              <table width="100%" role="presentation">
                 <tr>
-                  <td style="vertical-align:middle;">
-                    <img src="${logo}" width="50" style="border-radius:12px;display:block;" />
+                  <td style="vertical-align:middle; width:60px;">
+                    <!-- logo area with vibrant border/shadow -->
+                    <img src="${logo}" width="54" style="border-radius:18px;display:block;box-shadow:0 8px 14px -6px rgba(0,0,0,0.3);border:2px solid rgba(59,130,246,0.4);" alt="Brand Logo" />
                   </td>
-                  <td style="vertical-align:middle;padding-left:12px;font-family:Arial;color:#ffffff;">
-                    <div style="font-size:18px;font-weight:bold;">
+                  <td style="vertical-align:middle;padding-left:14px;">
+                    <div style="font-size:22px;font-weight:800;color:#ffffff;letter-spacing:-0.3px;font-family:inherit;line-height:1.2;" class="brand-text">
                       ${BRAND_NAME}
                     </div>
-                    <div style="font-size:13px;color:#cbd5e1;margin-top:4px;">
-                      ${title}
+                    <div style="font-size:13px;color:#a5f3fc;margin-top:6px;font-weight:500;letter-spacing:0.3px;background:rgba(255,255,255,0.1);display:inline-block;padding:2px 12px;border-radius:40px;">
+                      ✨ ${title} ✨
                     </div>
                   </td>
                 </tr>
@@ -140,34 +161,88 @@ function buildEmailHtml({ toEmail, subject, message }) {
             </td>
           </tr>
 
-          <!-- Message -->
+          <!-- Highlight bar / decorative element -->
           <tr>
-            <td style="padding:25px;font-family:Arial;color:#111827;">
-              <div style="font-size:14px;color:#6b7280;margin-bottom:10px;">
-                إلى: ${escapeHtml(toEmail)}
+            <td style="background:linear-gradient(90deg, #3b82f6, #8b5cf6, #ec489a); height:5px;"></td>
+          </tr>
+
+          <!-- Main Message Block: vibrant and modern card style -->
+          <tr>
+            <td style="padding:30px 28px 20px 28px;font-family:inherit;color:#0f172a;" class="content-padding">
+              <!-- Recipient line with cute icon -->
+              <div style="font-size:14px;color:#475569;margin-bottom:18px;display:flex;align-items:center;gap:6px;background:#f8fafc;padding:8px 14px;border-radius:60px;width:fit-content;">
+                <span style="font-size:16px;">📧</span> 
+                <span style="font-weight:500;">إلى: </span> 
+                <span style="font-weight:600;color:#0f172a;direction:ltr;unicode-bidi:embed;">${escapeHtml(toEmail)}</span>
               </div>
 
-              <div style="background:#f3f4f6;padding:18px;border-radius:14px;font-size:15px;line-height:24px;">
-                ${safeMsg}
+              <!-- Message bubble with energetic background, subtle pattern, engaging style -->
+              <div style="background:linear-gradient(145deg, #ffffff 0%, #fefce8 100%);padding:22px 24px;border-radius:28px;font-size:16px;line-height:1.55;color:#1e293b;border-left:6px solid #f97316;box-shadow:0 6px 12px -8px rgba(0,0,0,0.1);">
+                <!-- Adding a playful quote icon -->
+                <div style="font-size:28px;margin-bottom:8px;opacity:0.7;">💬</div>
+                <div style="font-weight:400;">
+                  ${safeMsg}
+                </div>
+                <!-- tiny decorative spark -->
+                <div style="margin-top:18px;border-top:2px dashed #fed7aa;padding-top:12px;font-size:13px;color:#b45309;display:flex;justify-content:flex-end;align-items:center;gap:6px;">
+                  <span>✨ جديد ومميز ✨</span>
+                </div>
               </div>
+             </td>
+          </tr>
+
+          <!-- Action Button Area with energetic CTA & hover style (inline fallback) -->
+          <tr>
+            <td align="center" style="padding:10px 28px 35px 28px;" class="button-td">
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                <tr>
+                  <td align="center" style="border-radius:60px; background:linear-gradient(105deg, #2563eb 0%, #4f46e5 100%); box-shadow:0 10px 18px -8px #1e3a8a;">
+                    <a href="${BRAND_URL}" 
+                       style="display:inline-block; background:transparent; color:#ffffff; padding:14px 32px; border-radius:60px; text-decoration:none; font-weight:800; font-family:inherit; font-size:16px; letter-spacing:0.5px; border:1px solid rgba(255,255,255,0.2); transition: all 0.2s ease;">
+                      🚀  زيارة الموقع  🚀
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <!-- small descriptive text under button -->
+              <div style="margin-top:12px; font-size:12px; color:#64748b;">
+                اكتشف العروض والأخبار الجديدة
+              </div>
+             </td>
+          </tr>
+
+          <!-- Extra flair: motivational mini section (keep fresh but simple) -->
+          <tr>
+            <td style="padding:0 28px 24px 28px;">
+              <table width="100%" style="background:#f1f5f9; border-radius:24px; padding:12px 16px;" role="presentation">
+                <tr>
+                  <td align="center" style="font-size:13px; color:#334155; font-weight:500;">
+                    ⚡ تواصل معنا على مدار الساعة ⚡ <br/>
+                    <span style="color:#2563eb; font-weight:600;">${BRAND_NAME}</span> يقدم لك أفضل التجارب
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
-          <!-- Button -->
+          <!-- Footer: clean but with energetic vibe -->
           <tr>
-            <td align="center" style="padding-bottom:25px;">
-              <a href="${BRAND_URL}"
-                 style="background:#2563eb;color:#ffffff;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:bold;font-family:Arial;">
-                زيارة الموقع
-              </a>
+            <td style="background:#111827; padding:22px 20px 20px; text-align:center;">
+              <div style="color:#cbd5e1; font-size:12px; font-family:inherit; line-height:1.5;">
+                © ${new Date().getFullYear()} ${BRAND_NAME} — جميع الحقوق محفوظة
+              </div>
+              <div style="color:#94a3b8; font-size:11px; margin-top:10px;">
+                ✨ صمم خصيصًا لتجربة بريدية حماسية ✨
+              </div>
+              <!-- invisible spacer for safety -->
+              <div style="height:4px;"></div>
             </td>
           </tr>
-
         </table>
 
-        <!-- Footer -->
-        <div style="color:#94a3b8;font-size:12px;margin-top:15px;font-family:Arial;">
-          © ${new Date().getFullYear()} ${BRAND_NAME}
+        <!-- Outer footer with brand link (extra spacing) -->
+        <div style="color:#5b6e8c; font-size:11px; margin-top:22px; font-family:inherit; text-align:center;">
+          🔥 ${BRAND_NAME} – حيث الإثارة تبدأ 🔥
         </div>
 
       </td>
