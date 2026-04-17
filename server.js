@@ -185,7 +185,6 @@ function buildEmailHtml({ toEmail, subject, message }) {
                 </div>
                 <!-- tiny decorative spark -->
                 <div style="margin-top:18px;border-top:2px dashed #fed7aa;padding-top:12px;font-size:13px;color:#b45309;display:flex;justify-content:flex-end;align-items:center;gap:6px;">
-                  <span>✨ جديد ومميز ✨</span>
                 </div>
               </div>
              </td>
@@ -204,12 +203,6 @@ function buildEmailHtml({ toEmail, subject, message }) {
                   </td>
                 </tr>
               </table>
-              <!-- small descriptive text under button -->
-              <div style="margin-top:12px; font-size:12px; color:#64748b;">
-                اكتشف العروض والأخبار الجديدة
-              </div>
-             </td>
-          </tr>
 
           <!-- Extra flair: motivational mini section (keep fresh but simple) -->
           <tr>
@@ -231,19 +224,12 @@ function buildEmailHtml({ toEmail, subject, message }) {
               <div style="color:#cbd5e1; font-size:12px; font-family:inherit; line-height:1.5;">
                 © ${new Date().getFullYear()} ${BRAND_NAME} — جميع الحقوق محفوظة
               </div>
-              <div style="color:#94a3b8; font-size:11px; margin-top:10px;">
-                ✨ صمم خصيصًا لتجربة بريدية حماسية ✨
-              </div>
+
               <!-- invisible spacer for safety -->
               <div style="height:4px;"></div>
             </td>
           </tr>
         </table>
-
-        <!-- Outer footer with brand link (extra spacing) -->
-        <div style="color:#5b6e8c; font-size:11px; margin-top:22px; font-family:inherit; text-align:center;">
-          🔥 ${BRAND_NAME} – حيث الإثارة تبدأ 🔥
-        </div>
 
       </td>
     </tr>
